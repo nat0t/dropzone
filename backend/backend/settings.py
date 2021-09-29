@@ -24,8 +24,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-f5f&fb&30m61h-
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+DEBUG = int(os.environ.get("DEBUG", default=1))
 
 ALLOWED_HOSTS = ['*']
 
@@ -140,7 +139,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, '..', 'nginx', 'static')
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'nginx', 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'nginx', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type

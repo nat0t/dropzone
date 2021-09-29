@@ -1,5 +1,6 @@
 FROM python:3.8.6
 
+ENV DEBUG=0
 ENV DB=mysql
 ENV MYSQL_USER=dbadmin
 ENV MYSQL_PASSWORD=dbpassword
