@@ -11,7 +11,7 @@ class ImageList extends React.Component {
     renderImages = () => {
         return this.props.imageList
             .map(image => (
-                <Grid item xs={2}>
+                <Grid item xs={2} key={image.id}>
                     <img src={image.image} alt={image.name} />
                 </Grid>
             ));
