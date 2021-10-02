@@ -161,7 +161,7 @@ LOGGING = {
         },
         'verbose': {
             'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
-        }
+        },
     },
     'handlers': {
         'null': {
@@ -169,17 +169,23 @@ LOGGING = {
             'class': 'logging.NullHandler',
         },
         'console': {
+            'level': 'WARNING',
             'class': 'rich.logging.RichHandler',
             'formatter': 'simple',
         },
         'file': {
-            'level': 'WARNING',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': 'warnings.log',
-        }
+            'filename': 'log.log',
+        },
     },
     'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'propagate': True,
+            'level': 'INFO',
+        },
         'django': {
             'handlers': ['null'],
             'propagate': True,
@@ -187,12 +193,17 @@ LOGGING = {
         },
         'django.request': {
             'handlers': ['console', 'file'],
-            'level': 'WARNING',
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'django.sever': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
             'propagate': False,
         },
         'django.db.backends': {
             'handlers': ['console', 'file'],
-            'level': 'WARNING',
+            'level': 'INFO',
             'propagate': False,
         },
         'django.security.*': {
@@ -204,6 +215,6 @@ LOGGING = {
             'handlers': ['console', 'file'],
             'level': 'WARNING',
             'propagate': False,
-        }
+        },
     }
 }
